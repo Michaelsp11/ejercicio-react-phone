@@ -36,6 +36,7 @@ function App() {
           setOcultarLlamar(false);
           setOcultarColgar(true);
           setNumeroLlamar("");
+          setDesabilitadoLlamar(true);
         }, 5000)
       );
     }
