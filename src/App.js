@@ -11,6 +11,7 @@ function App() {
   const [ocultarLlamar, setOcultarLlamar] = useState(false);
   const [ocultarColgar, setOcultarColgar] = useState(true);
   const [mostrarMensaje, setMostrarMensaje] = useState(false);
+  const [timer, setTimer] = useState();
   const numeroCorrecto = () => numeroLlamar.length === 9;
   const marcarNumero = (numero) => {
     if (numeroCorrecto()) {
@@ -23,46 +24,30 @@ function App() {
     setNumeroLlamar(numeroLlamar.slice(0, numeroLlamar.length - 1));
     setDesabilitadoLlamar(true);
   };
-  const verMensaje = (ver = true) => {
-    setMostrarMensaje(true);
-    const mostrar = setTimeout(() => {
-      setMostrarMensaje(false);
-    }, 5000);
-    if (!ver) {
-      clearTimeout(mostrar);
-    }
-  };
-  const ocultaBotonLlamar = (ver = true) => {
-    setOcultarLlamar(true);
-    const ocultarBoton = setTimeout(() => {
-      setOcultarLlamar(false);
-    }, 5000);
-    if (!ver) {
-      clearTimeout(ocultarBoton);
-    }
-  };
-  const mostrarBotonColgar = (ver = true) => {
-    setOcultarColgar(false);
-    const mostrarBoton = setTimeout(() => {
-      setOcultarColgar(true);
-    }, 5000);
-    if (!ver) {
-      clearTimeout(mostrarBoton);
-    }
-  };
   const llamar = (evento) => {
     evento.preventDefault();
     if (numeroCorrecto()) {
-      verMensaje();
-      ocultaBotonLlamar();
-      mostrarBotonColgar();
+      setMostrarMensaje(true);
+      setOcultarLlamar(true);
+      setOcultarColgar(false);
+      setTimer(
+        setTimeout(() => {
+          setMostrarMensaje(false);
+          setOcultarLlamar(false);
+          setOcultarColgar(true);
+          setNumeroLlamar("");
+        }, 5000)
+      );
     }
   };
   const colgar = (evento) => {
     evento.preventDefault();
-    verMensaje(false);
-    ocultaBotonLlamar(false);
-    mostrarBotonColgar(false);
+    setTimer(clearTimeout(timer));
+    setMostrarMensaje(false);
+    setOcultarLlamar(false);
+    setOcultarColgar(true);
+    setNumeroLlamar("");
+    setDesabilitadoLlamar(true);
   };
   return (
     <div className="contenedor">
