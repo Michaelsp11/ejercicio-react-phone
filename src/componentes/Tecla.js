@@ -1,8 +1,13 @@
 export const Tecla = (props) => {
-  const { contenido, marcarNumero } = props;
+  const { contenido, teclasDesabilitada, marcarNumero } = props;
   return (
     <li>
-      <button onClick={() => marcarNumero(contenido)}>{contenido}</button>
+      <button
+        onClick={() => marcarNumero(contenido)}
+        disabled={teclasDesabilitada}
+      >
+        {contenido}
+      </button>
     </li>
   );
 };

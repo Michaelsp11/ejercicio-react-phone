@@ -1,3 +1,8 @@
 export const Info = (props) => {
-  return <span className="mensaje off">Llamando...</span>;
+  const { mostrarMensaje } = props;
+  return (
+    <span className={`mensaje${mostrarMensaje ? "" : " off"}`}>
+      Llamando...
+    </span>
+  );
 };

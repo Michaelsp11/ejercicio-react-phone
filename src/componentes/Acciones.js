@@ -1,19 +1,27 @@
 import { Accion } from "./Accion.js";
 export const Acciones = (props) => {
-  const { desabilitadoLlamar } = props;
+  const {
+    desabilitadoLlamar,
+    ocultarLlamar,
+    ocultarColgar,
+    funcionLlamar,
+    funcionColgar,
+  } = props;
   return (
     <>
       <Accion
         contenido="Llamar"
-        clase="llamar"
+        clases="llamar"
         desabilitado={desabilitadoLlamar}
-        off={false}
+        ocultar={ocultarLlamar}
+        realizarAccion={funcionLlamar}
       />
       <Accion
         contenido="Colgar"
-        clase="colgar"
-        desabilitado={desabilitadoLlamar}
-        off={true}
+        clases="colgar"
+        desabilitado={false}
+        ocultar={ocultarColgar}
+        realizarAccion={funcionColgar}
       />
     </>
   );

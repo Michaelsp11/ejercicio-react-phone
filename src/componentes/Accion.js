@@ -1,9 +1,12 @@
 export const Accion = (props) => {
-  const { contenido, clase, off, desabilitado } = props;
+  const { contenido, clases, ocultar, desabilitado, realizarAccion } = props;
   return (
     <a
-      href={clase}
-      className={`${clase}${desabilitado ? "" : " activo"}${off ? " off" : ""}`}
+      href={contenido}
+      className={`${clases}${desabilitado ? "" : " activo"}${
+        ocultar ? " off" : ""
+      }`}
+      onClick={realizarAccion}
     >
       {contenido}
     </a>
