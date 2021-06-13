@@ -1,8 +1,8 @@
 export const Tecla = (props) => {
-  const { contenido } = props;
+  const { contenido, marcarNumero } = props;
   return (
     <li>
-      <button>{contenido}</button>
+      <button onClick={() => marcarNumero(contenido)}>{contenido}</button>
     </li>
   );
 };

@@ -1,3 +1,4 @@
 export const Display = (props) => {
-  return <span className="numero">667359961</span>;
+  const { numero } = props;
+  return <span className="numero">{numero}</span>;
 };
